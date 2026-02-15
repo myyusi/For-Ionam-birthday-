@@ -83,15 +83,29 @@
 
 <script>
   const PASSWORD = "8/6/2008";
+  const wrongMessages = [
+    "Love, think a little, huhuhuhu 😭😡",
+    "Not yet, my little princess 💖",
+    "Try again, I know you can 😘",
+    "Oopsie! Wrong one 😅",
+    "Keep thinking, you're so close! 💕"
+  ];
+
+  let wrongCount = 0; // keeps track of wrong attempts
+
   function tryEnter() {
     const val = document.getElementById('pwInput').value.trim().toLowerCase();
     const inp = document.getElementById('pwInput');
     const err = document.getElementById('errMsg');
+
     if(val === PASSWORD){
       document.getElementById('pwCard').style.display = 'none';
     } else {
       inp.classList.remove('wrong'); void inp.offsetWidth; inp.classList.add('wrong');
-      err.textContent = "Love, think a little, huhuhuhu 😭😡";
+
+      // Show a different wrong message each time
+      err.textContent = wrongMessages[wrongCount % wrongMessages.length];
+      wrongCount++;
     }
   }
 </script>
