@@ -10,7 +10,9 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-T1LR278DN2');
+  gtag('config', 'G-T1LR278DN2', {
+    user_id: navigator.userAgent
+  });
 </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
