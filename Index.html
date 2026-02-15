@@ -20,6 +20,82 @@
   </style>  
 </head>  
 <body>  
+  <!-- PASSWORD PROTECTOR START -->
+<style>
+  /* Card styling */
+  #pwCard {
+    position:fixed; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(145deg,#fff0f3 0%,#fde8f5 50%,#fff5f0 100%);
+    z-index:9999;
+  }
+  .card {
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(18px);
+    border-radius:40px;
+    padding:56px 64px;
+    text-align:center;
+    max-width:500px; width:92%;
+    box-shadow:0 28px 80px rgba(232,64,90,0.16),0 4px 28px rgba(255,182,193,0.4);
+  }
+  .card h1 { font-size:2.4em; color:#e8405a; margin-bottom:12px; }
+  .card p { font-size:1.2em; color:#a05070; margin-bottom:24px; }
+
+  input[type=password] {
+    width:100%;
+    padding:16px 24px;
+    border-radius:50px;
+    border:2px solid #ffb6c1;
+    text-align:center;
+    font-size:1.2em;
+    outline:none;
+    margin-bottom:12px;
+    transition:.2s;
+  }
+  input[type=password].wrong { border-color:#ff4444; animation:shake .4s; }
+  @keyframes shake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-8px);} 40%{transform:translateX(8px);} 60%{transform:translateX(-6px);} 80%{transform:translateX(6px);} }
+
+  .btn-enter {
+    width:100%;
+    padding:14px;
+    font-size:1em;
+    background:#ff9ecf;
+    border:none;
+    border-radius:50px;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+  }
+  .btn-enter:hover { background:#f875b6; }
+
+  .error-msg { height:24px; margin-top:6px; color:#ff4444; font-size:0.9em; }
+</style>
+
+<div id="pwCard">
+  <div class="card">
+    <h1>🔒 Enter the password</h1>
+    <p>Only for my Iona 💖</p>
+    <input type="password" id="pwInput" placeholder="Type here..." onkeydown="if(event.key==='Enter') tryEnter()">
+    <button class="btn-enter" onclick="tryEnter()">Enter</button>
+    <div class="error-msg" id="errMsg"></div>
+  </div>
+</div>
+
+<script>
+  const PASSWORD = "8/6/2008";
+  function tryEnter() {
+    const val = document.getElementById('pwInput').value.trim().toLowerCase();
+    const inp = document.getElementById('pwInput');
+    const err = document.getElementById('errMsg');
+    if(val === PASSWORD){
+      document.getElementById('pwCard').style.display = 'none';
+    } else {
+      inp.classList.remove('wrong'); void inp.offsetWidth; inp.classList.add('wrong');
+      err.textContent = "Love, think a little, huhuhuhu 😭😡";
+    }
+  }
+</script>
+<!-- PASSWORD PROTECTOR END -->
   <div id="page1" class="page active" style="background-image: url('https://media.giphy.com/media/nGha5g6bKlZGd9dX0k/giphy.gif');">  
     <div class="stickers">  
   <img src="https://media.giphy.com/media/5tiJtxFgWhp6lYYIr0/giphy.gif" alt="Birthday Tonton">  
